@@ -1,14 +1,16 @@
 package com.example.translator.view.main
 
-import android.view.View
+
 import com.example.translator.model.data.AppState
 import com.example.translator.model.datasource.DataSourceLocal
 import com.example.translator.model.datasource.DataSourceRemote
 import com.example.translator.model.repository.RepositoryImplementation
 import com.example.translator.presenter.Presenter
-import com.example.translator.rx.SchedulerProvider
+import com.example.translator.view.base.View
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
+import io.reactivex.schedulers.Schedulers
 
 class MainPresenterImpl<T : AppState, V : View>(
     private val interactor: MainInteractor = MainInteractor(
@@ -16,7 +18,7 @@ class MainPresenterImpl<T : AppState, V : View>(
         RepositoryImplementation(DataSourceLocal())
     ),
     private val compositeDisposable: CompositeDisposable = CompositeDisposable(),
-    private val schedulerProvider: SchedulerProvider = SchedulerProvider(),
+    //private val schedulerProvider: SchedulerProvider = SchedulerProvider(),
 ) : Presenter<T, V> {
     private var currentView: V? = null
 
@@ -36,8 +38,10 @@ class MainPresenterImpl<T : AppState, V : View>(
     override fun getData(word: String, isOnline: Boolean) {
         compositeDisposable.add(
             interactor.getData(word, isOnline)
-                .subscribeOn(schedulerProvider.io())
-                .observeOn(schedulerProvider.ui())
+//                .subscribeOn(schedulerProvider.io)
+//                .observeOn(schedulerProvider.ui())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { currentView?.renderData(AppState.Loading(null)) }
                 .subscribeWith(getObserver())
         )

@@ -7,7 +7,7 @@ import com.example.translator.presenter.Presenter
 
 abstract class BaseActivity<T : AppState> : AppCompatActivity(), View {
 
-    private lateinit var presenter: Presenter<T, View>
+    protected lateinit var presenter: Presenter<T, View>
 
     protected abstract fun createPresenter(): Presenter<T, View>
 
