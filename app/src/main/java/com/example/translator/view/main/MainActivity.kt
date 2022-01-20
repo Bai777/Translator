@@ -55,8 +55,8 @@ class MainActivity : BaseActivity<AppState>() {
                 } else {
                     showViewSuccess()
                     if (adapter == null) {
-                        binding.mainActivityRecyclerview.layoutManager =
-                            LinearLayoutManager(applicationContext)
+//                        binding.mainActivityRecyclerview.layoutManager =
+//                            LinearLayoutManager(this)
                         binding.mainActivityRecyclerview.adapter =
                             MainAdapter(onListItemClickListener, dataModel)
                     } else {
