@@ -26,7 +26,7 @@ class MainActivity : BaseActivity<AppState>() {
         }
 
     override fun createPresenter(): Presenter<AppState, View> {
-        return MainPresenterImpl()
+        return MainViewModel()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

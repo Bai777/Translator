@@ -1,57 +1,44 @@
 package com.example.translator.view.main
 
 
+import androidx.lifecycle.LiveData
 import com.example.translator.model.data.AppState
 import com.example.translator.model.datasource.DataSourceLocal
 import com.example.translator.model.datasource.DataSourceRemote
 import com.example.translator.model.repository.RepositoryImplementation
-import com.example.translator.rx.SchedulerProvider
-import com.example.translator.view.base.View
-import io.reactivex.disposables.CompositeDisposable
+import com.example.translator.viewmodel.BaseViewModel
 import io.reactivex.observers.DisposableObserver
 
-class MainPresenterImpl<T : AppState, V : View>(
+class MainViewModel(
     private val interactor: MainInteractor = MainInteractor(
         RepositoryImplementation(DataSourceRemote()),
         RepositoryImplementation(DataSourceLocal())
-    ),
-    private val compositeDisposable: CompositeDisposable = CompositeDisposable(),
-    private val schedulerProvider: SchedulerProvider = SchedulerProvider(),
-) : Presenter<T, V> {
-    private var currentView: V? = null
+    )
+) : BaseViewModel<AppState>() {
 
-    override fun attachView(view: V) {
-        if (view != currentView) {
-            currentView = view
-        }
-    }
+    private var appState: AppState? = null
 
-    override fun detachView(view: V) {
-        compositeDisposable.clear()
-        if (view == currentView) {
-            currentView = null
-        }
-    }
-
-    override fun getData(word: String, isOnline: Boolean) {
+    override fun getData(word: String, isOnline: Boolean): LiveData<AppState> {
         compositeDisposable.add(
             interactor.getData(word, isOnline)
                 .subscribeOn(schedulerProvider.io())
                 .observeOn(schedulerProvider.ui())
-                .doOnSubscribe { currentView?.renderData(AppState.Loading(null)) }
+                .doOnSubscribe { liveDataForViewToObserve.value = AppState.Loading(null) }
                 .subscribeWith(getObserver())
         )
+        return super.getData(word, isOnline)
     }
 
     private fun getObserver(): DisposableObserver<AppState> {
         return object : DisposableObserver<AppState>() {
 
-            override fun onNext(appState: AppState) {
-                currentView?.renderData(appState)
+            override fun onNext(state: AppState) {
+                appState = state
+                liveDataForViewToObserve.value = state
             }
 
             override fun onError(e: Throwable) {
-                currentView?.renderData(AppState.Error(e))
+                liveDataForViewToObserve.value = AppState.Error(e)
             }
 
             override fun onComplete() {
