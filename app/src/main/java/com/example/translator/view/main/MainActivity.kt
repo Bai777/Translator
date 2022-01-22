@@ -9,7 +9,7 @@ import com.example.translator.R
 import com.example.translator.databinding.ActivityMainBinding
 import com.example.translator.model.data.AppState
 import com.example.translator.model.data.DataModel
-import com.example.translator.presenter.Presenter
+import com.example.translator.viewmodel.Presenter
 import com.example.translator.view.base.BaseActivity
 import com.example.translator.view.base.View
 import com.example.translator.view.main.adapter.MainAdapter

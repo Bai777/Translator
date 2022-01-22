@@ -1,4 +1,4 @@
-package com.example.translator.presenter
+package com.example.translator.viewmodel
 
 import com.example.translator.model.data.AppState
 import com.example.translator.view.base.View
