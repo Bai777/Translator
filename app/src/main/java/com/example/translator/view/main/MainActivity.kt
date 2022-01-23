@@ -13,13 +13,17 @@ import com.example.translator.model.data.AppState
 import com.example.translator.model.data.DataModel
 import com.example.translator.view.base.BaseActivity
 import com.example.translator.view.main.adapter.MainAdapter
+import dagger.android.AndroidInjection
+import javax.inject.Inject
 
-class MainActivity: BaseActivity<AppState>() {
+class MainActivity : BaseActivity<AppState, MainInteractor>() {
 
-    override val model: MainViewModel by lazy {
-        ViewModelProvider.NewInstanceFactory().create(MainViewModel::class.java)
-    }
-    private val observer = Observer<AppState>{renderData(it)}
+    @Inject
+    internal lateinit var viewModelFactory: ViewModelProvider.Factory
+
+
+    override lateinit var model: MainViewModel
+    private val observer = Observer<AppState> { renderData(it) }
     private lateinit var binding: ActivityMainBinding
 
     private var adapter: MainAdapter? = null
@@ -32,9 +36,14 @@ class MainActivity: BaseActivity<AppState>() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        model = viewModelFactory.create(MainViewModel::class.java)
+        model.subscribe().observe(this@MainActivity, Observer<AppState> {
+            renderData(it)
+        })
         binding.searchFab.setOnClickListener {
             val searchDialogFragment = SearchDialogFragment.newInstance()
             searchDialogFragment.setOnSearchClickListener(object :
@@ -107,6 +116,7 @@ class MainActivity: BaseActivity<AppState>() {
         binding.loadingFrameLayout.visibility = GONE
         binding.errorLinearLayout.visibility = VISIBLE
     }
+
     companion object {
         private const val BOTTOM_SHEET_FRAGMENT_DIALOG_TAG =
             "74a54328-5d62-46bf-ab6b-cbf5fgt0-092395"

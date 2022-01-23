@@ -5,6 +5,7 @@ import com.example.translator.application.TranslatorApp
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjection
+import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
 @Component(
@@ -13,7 +14,7 @@ import javax.inject.Singleton
         RepositoryModule::class,
         ViewModelModule::class,
         ActivityModule::class,
-        AndroidSupportInjection::class
+        AndroidSupportInjectionModule::class
     ]
 )
 

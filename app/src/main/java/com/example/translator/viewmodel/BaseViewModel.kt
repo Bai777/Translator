@@ -22,5 +22,4 @@ abstract class BaseViewModel<T: AppState>(
     override fun onCleared() {
         compositeDisposable.clear()
     }
-
 }
