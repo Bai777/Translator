@@ -40,7 +40,7 @@ class MainActivity : BaseActivity<AppState, MainInteractor>() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        model = viewModelFactory.create(MainViewModel::class.java)
+        model = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         model.subscribe().observe(this@MainActivity, Observer<AppState> {
             renderData(it)
         })
