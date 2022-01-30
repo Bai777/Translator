@@ -9,10 +9,11 @@ import com.example.translator.R
 import com.example.translator.model.data.DataModel
 
 class MainAdapter(
-    private var onListItemClickListener: OnListItemClickListener,
-    private var data: List<DataModel>
+    private var onListItemClickListener: OnListItemClickListener
 ) :
     RecyclerView.Adapter<MainAdapter.RecyclerItemViewHolder>() {
+
+    private lateinit var data: List<DataModel>
 
     fun setData(data: List<DataModel>) {
         this.data = data
