@@ -6,12 +6,12 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.translator.R
 import com.example.translator.databinding.ActivityMainBinding
 import com.example.translator.model.data.AppState
 import com.example.translator.model.data.DataModel
+import com.example.translator.utils.network.isOnline
 import com.example.translator.view.base.BaseActivity
 import com.example.translator.view.main.adapter.MainAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -43,7 +43,7 @@ class MainActivity : BaseActivity<AppState, MainInteractor>() {
     private val onSearchClickListener: SearchDialogFragment.OnSearchClickListener =
         object : SearchDialogFragment.OnSearchClickListener {
             override fun onClick(searchWord: String) {
-                isNetworkAvailable = isOnline(applicationContext)
+                val isNetworkAvailable = isOnline(this@MainActivity)
                 if (isNetworkAvailable) {
                     model.getData(searchWord, isNetworkAvailable)
                 } else {
@@ -52,11 +52,9 @@ class MainActivity : BaseActivity<AppState, MainInteractor>() {
             }
         }
 
-
     private fun showNoInternetConnectionDialog() {
         val builder = AlertDialog.Builder(this)
         builder.setMessage(R.string.no_internet_connection)
-
     }
 
 
@@ -64,7 +62,6 @@ class MainActivity : BaseActivity<AppState, MainInteractor>() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        model = ViewModelProvider(this).get(MainViewModel::class.java)
         initViewModel()
         initViews()
     }
@@ -97,7 +94,7 @@ class MainActivity : BaseActivity<AppState, MainInteractor>() {
             is AppState.Error -> {
                 showViewWorking()
                 showAlertDialog(
-                    getString(R.string.dialog_title_sorry),
+                    getString(R.string.dialog_title_stub),
                     appState.error.message
                 )
             }

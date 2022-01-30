@@ -2,10 +2,11 @@ package com.example.translator.model.datasource
 
 
 import com.example.translator.model.data.DataModel
+import com.example.translator.model.data.api.ApiService
+import com.example.translator.model.data.api.BaseInterceptor
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -15,7 +16,7 @@ class RetrofitImplementation: DataSource<List<DataModel>> {
         return getService(BaseInterceptor.interceptor).searchAsync(word).await()
     }
 
-    private fun getService(interceptor: Interceptor): ApiService{
+    private fun getService(interceptor: Interceptor): ApiService {
         return createRetrofit(interceptor).create(ApiService::class.java)
     }
 
@@ -31,7 +32,6 @@ class RetrofitImplementation: DataSource<List<DataModel>> {
     private fun createOkHttpClient(interceptor: Interceptor): OkHttpClient{
         val httpClient = OkHttpClient.Builder()
         httpClient.addInterceptor(interceptor)
-        httpClient.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
         return httpClient.build()
     }
 
