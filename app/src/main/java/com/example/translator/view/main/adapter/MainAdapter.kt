@@ -13,7 +13,7 @@ class MainAdapter(
 ) :
     RecyclerView.Adapter<MainAdapter.RecyclerItemViewHolder>() {
 
-    private lateinit var data: List<DataModel>
+    private var data: List<DataModel> = arrayListOf()
 
     fun setData(data: List<DataModel>) {
         this.data = data

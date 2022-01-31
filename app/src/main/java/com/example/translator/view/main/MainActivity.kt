@@ -12,6 +12,7 @@ import com.example.translator.databinding.ActivityMainBinding
 import com.example.translator.model.data.AppState
 import com.example.translator.model.data.DataModel
 import com.example.translator.utils.network.isOnline
+import com.example.translator.utils.ui.AlertDialogFragment
 import com.example.translator.view.base.BaseActivity
 import com.example.translator.view.main.adapter.MainAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
