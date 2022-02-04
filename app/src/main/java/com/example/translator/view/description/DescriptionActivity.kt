@@ -1,6 +1,5 @@
 package com.example.translator.view.description
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
@@ -71,7 +70,6 @@ class DescriptionActivity : AppCompatActivity() {
         Glide.with(imageView)
             .load("https:$imageLink")
             .listener(object : RequestListener<Drawable> {
-                @SuppressLint("CheckResult")
                 override fun onLoadFailed(
                     e: GlideException?,
                     model: Any?,
