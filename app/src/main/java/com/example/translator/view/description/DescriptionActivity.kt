@@ -23,7 +23,7 @@ class DescriptionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDescriptionBinding.inflate(layoutInflater)
+       binding = ActivityDescriptionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setActionbarHomeButtonAsUp()
@@ -34,7 +34,7 @@ class DescriptionActivity : AppCompatActivity() {
     }
 
     private fun startLoadingOrShowError() {
-        if (isOnline(applicationContext)) {
+        if (isOnline(this)) {
             setData()
         } else {
             AlertDialogFragment.newInstance(
