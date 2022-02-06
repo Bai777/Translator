@@ -23,7 +23,7 @@ class MainAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerItemViewHolder {
         return RecyclerItemViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.list_item_layout, parent, false) as View
+                .inflate(R.layout.activity_main_recyclerview_item, parent, false) as View
         )
     }
 

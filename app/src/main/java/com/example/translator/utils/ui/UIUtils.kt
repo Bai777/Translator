@@ -21,6 +21,5 @@ fun getAlertDialog(context: Context, title: String?, message: String?): AlertDia
     builder.setCancelable(true)
     builder.setPositiveButton(R.string.dialog_button_cancel) { dialog, _ -> dialog.dismiss() }
     return builder.create()
-
 }
 
