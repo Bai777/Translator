@@ -18,7 +18,7 @@ import com.example.translator.view.base.BaseActivity
 import com.example.translator.view.description.DescriptionActivity
 import com.example.translator.view.history.HistoryActivity
 import com.example.translator.view.main.adapter.MainAdapter
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.android.viewmodel.ext.android.viewModel
 
 private const val BOTTOM_SHEET_FRAGMENT_DIALOG_TAG =
     "74a54328-5d62-46bf-ab6b-cbf5fgt0-092395"
