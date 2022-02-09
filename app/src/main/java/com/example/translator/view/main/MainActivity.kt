@@ -10,13 +10,13 @@ import android.view.View
 import androidx.lifecycle.Observer
 import com.example.translator.R
 import com.example.translator.databinding.ActivityMainBinding
-import com.example.translator.model.data.AppState
-import com.example.translator.model.data.DataModel
+import com.example.translator.model.server.AppState
+import com.example.translator.model.server.DataModel
 import com.example.translator.utils.convertMeaningsToString
 import com.example.translator.utils.network.isOnline
-import com.example.translator.view.base.BaseActivity
+import com.example.core.viewmodel.base.BaseActivity
 import com.example.translator.view.description.DescriptionActivity
-import com.example.translator.view.history.HistoryActivity
+import history.view.HistoryActivity
 import com.example.translator.view.main.adapter.MainAdapter
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -101,7 +101,7 @@ class MainActivity : BaseActivity<AppState, MainInteractor>() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_history -> {
-                startActivity(Intent(this, HistoryActivity::class.java))
+                startActivity(Intent(this, history.view.HistoryActivity::class.java))
                 true
             }
             else -> super.onOptionsItemSelected(item)

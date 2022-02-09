@@ -1,38 +1,30 @@
 package com.example.translator.utils
 
+import com.example.model.data
 
-import com.example.translator.model.data.AppState
-import com.example.translator.model.data.DataModel
-import com.example.translator.model.data.Meanings
-import com.example.translator.room.HistoryEntity
-
-fun parseOnlineSearchResults(appState: AppState): AppState {
-    return AppState.Success(mapResult(appState, true))
-}
-
-fun parseLocalSearchResults(appState: AppState): AppState {
-    return AppState.Success(mapResult(appState, false))
+fun parseOnlineSearchResults(data: AppState): AppState {
+    return AppState.Success(mapResult(data, true))
 }
 
 private fun mapResult(
-    appState: AppState,
+    data: AppState,
     isOnline: Boolean
 ): List<DataModel> {
     val newSearchResults = arrayListOf<DataModel>()
-    when (appState) {
+    when (data) {
         is AppState.Success -> {
-            getSuccessResultData(appState, isOnline, newSearchResults)
+            getSuccessResultData(data, isOnline, newSearchResults)
         }
     }
     return newSearchResults
 }
 
 private fun getSuccessResultData(
-    appState: AppState.Success,
+    data: AppState.Success,
     isOnline: Boolean,
     newDataModels: ArrayList<DataModel>
 ) {
-    val dataModels: List<DataModel> = appState.data as List<DataModel>
+    val dataModels: List<DataModel> = data.data as List<DataModel>
     if (dataModels.isNotEmpty()) {
         if (isOnline) {
             for (searchResult in dataModels) {
@@ -46,71 +38,20 @@ private fun getSuccessResultData(
     }
 }
 
-private fun parseOnlineResult(dataModel: DataModel, newDataModels: ArrayList<DataModel>) {
+private fun parseOnlineResult(
+    dataModel: DataModel,
+    newDataModels: ArrayList<DataModel>
+) {
     if (!dataModel.text.isNullOrBlank() && !dataModel.meanings.isNullOrEmpty()) {
         val newMeanings = arrayListOf<Meanings>()
-        for (meaning in dataModel.meanings) {
-            if (meaning.translation != null && !meaning.translation.translation.isNullOrBlank()) {
+        for (meaning in dataModel.meanings!!) {
+            if (meaning.translation != null && !meaning.translation!!.translation.isNullOrBlank()) {
                 newMeanings.add(Meanings(meaning.translation, meaning.imageUrl))
             }
         }
         if (newMeanings.isNotEmpty()) {
             newDataModels.add(DataModel(dataModel.text, newMeanings))
         }
-    }
-}
-
-
-fun parseSearchResult(data: AppState): AppState {
-    val newSearchResults = arrayListOf<DataModel>()
-    when (data) {
-        is AppState.Success -> {
-            val searchResults = data.data
-            if (!searchResults.isNullOrEmpty()) {
-                for (searchResult in searchResults) {
-                    parseResult(searchResult, newSearchResults)
-                }
-            }
-        }
-    }
-    return AppState.Success(newSearchResults)
-}
-
-private fun parseResult(dataModel: DataModel, newDataModels: ArrayList<DataModel>) {
-    if (!dataModel.text.isNullOrBlank() && !dataModel.meanings.isNullOrEmpty()) {
-        val newMeanings = arrayListOf<Meanings>()
-        for (meaning in dataModel.meanings) {
-            if (meaning.translation != null && !meaning.translation.translation.isNullOrBlank()) {
-                newMeanings.add(Meanings(meaning.translation, meaning.imageUrl))
-            }
-        }
-        if (newMeanings.isNotEmpty()) {
-            newDataModels.add(DataModel(dataModel.text, newMeanings))
-        }
-    }
-}
-
-fun mapHistoryEntityToSearchResult(list: List<HistoryEntity>): List<DataModel> {
-    val dataModel = ArrayList<DataModel>()
-    if (!list.isNullOrEmpty()) {
-        for (entity in list) {
-            dataModel.add(DataModel(entity.word, null))
-        }
-    }
-    return dataModel
-}
-
-fun convertDataModelSuccessToEntity(appState: AppState): HistoryEntity? {
-    return when (appState) {
-        is AppState.Success -> {
-            val searchResult = appState.data
-            if (searchResult.isNullOrEmpty() || searchResult[0].text.isNullOrEmpty()) {
-                null
-            } else {
-                HistoryEntity(searchResult[0].text!!, null)
-            }
-        }
-        else -> null
     }
 }
 
