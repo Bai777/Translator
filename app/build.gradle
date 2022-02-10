@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion Config.compile_sdk
+    compileSdk Config.compile_sdk
     defaultConfig {
         applicationId Config.application_id
         minSdkVersion Config.min_sdk
@@ -64,5 +64,11 @@ dependencies {
     androidTestImplementation TestImpl.runner
     androidTestImplementation TestImpl.espresso
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+}
+repositories {
+    mavenCentral()
 }
 

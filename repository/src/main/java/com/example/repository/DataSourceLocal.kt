@@ -1,6 +1,6 @@
 package com.example.repository
 
-import com.example.translator.model.data.AppState
+import com.example.repository.
 
 interface DataSourceLocal<T>: DataSource<T> {
     suspend fun saveToDB(appState: AppState)
