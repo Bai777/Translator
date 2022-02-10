@@ -12,7 +12,7 @@ import coil.transform.CircleCropTransformation
 import com.example.translator.R
 import com.example.translator.databinding.ActivityDescriptionBinding
 import com.example.translator.utils.network.isOnline
-import com.example.translator.utils.ui.AlertDialogFragment
+import com.example.utils.ui.AlertDialogFragment
 
 class DescriptionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDescriptionBinding
@@ -33,7 +33,7 @@ class DescriptionActivity : AppCompatActivity() {
         if (isOnline(this)) {
             setData()
         } else {
-            AlertDialogFragment.newInstance(
+            com.example.utils.ui.AlertDialogFragment.newInstance(
                 getString(R.string.dialog_title_device_is_offline),
                 getString(R.string.dialog_message_device_is_offline)
             ).show(
