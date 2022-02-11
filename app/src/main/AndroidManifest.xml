@@ -26,7 +26,7 @@
             android:name=".view.description.DescriptionActivity"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name="history.view.HistoryActivity"
+            android:name="com.example.view.HistoryActivity"
             android:screenOrientation="fullSensor"/>
     </application>
 

@@ -1,4 +1,4 @@
-package com.example.translator.server
+package com.example.model.data
 
 enum class ServerResponseStatusCode {
     INFO,

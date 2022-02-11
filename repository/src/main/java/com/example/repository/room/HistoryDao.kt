@@ -1,4 +1,4 @@
-package com.example.repository.api.room
+package com.example.repository.room
 
 import androidx.room.*
 

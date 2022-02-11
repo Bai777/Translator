@@ -8,16 +8,16 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.Observer
+import com.example.core.viewmodel.base.BaseActivity
+import com.example.model.data.AppState
+import com.example.model.data.DataModel
 import com.example.translator.R
 import com.example.translator.databinding.ActivityMainBinding
-import com.example.translator.model.server.AppState
-import com.example.translator.model.server.DataModel
 import com.example.translator.utils.convertMeaningsToString
-import com.example.translator.utils.network.isOnline
-import com.example.core.viewmodel.base.BaseActivity
+import com.example.utils.network.isOnline
 import com.example.translator.view.description.DescriptionActivity
-import history.view.HistoryActivity
 import com.example.translator.view.main.adapter.MainAdapter
+import com.example.view.HistoryActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 private const val BOTTOM_SHEET_FRAGMENT_DIALOG_TAG =
@@ -47,7 +47,7 @@ class MainActivity : BaseActivity<AppState, MainInteractor>() {
                         this@MainActivity,
                         data.text!!,
                         convertMeaningsToString(data.meanings!!),
-                        data.meanings[0].imageUrl
+                        data.meanings!![0].imageUrl
                     )
                 )
             }
@@ -101,7 +101,7 @@ class MainActivity : BaseActivity<AppState, MainInteractor>() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_history -> {
-                startActivity(Intent(this, history.view.HistoryActivity::class.java))
+                startActivity(Intent(this, HistoryActivity::class.java))
                 true
             }
             else -> super.onOptionsItemSelected(item)

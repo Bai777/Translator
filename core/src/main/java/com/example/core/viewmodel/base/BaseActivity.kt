@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.translator.R
-import com.example.translator.databinding.LoadingLayoutBinding
-import com.example.translator.model.data.AppState
-import com.example.translator.model.data.DataModel
-import com.example.translator.utils.network.isOnline
-import com.example.translator.utils.ui.AlertDialogFragment
+import com.example.core.R
+import com.example.core.databinding.LoadingLayoutBinding
+import com.example.model.data.AppState
+import com.example.model.data.DataModel
+import com.example.utils.network.isOnline
+import com.example.utils.ui.AlertDialogFragment
 
 private const val DIALOG_FRAGMENT_TAG = "74a54328-5d62-46bf-ab6b-cbf5d8c79522"
 
@@ -80,7 +80,7 @@ abstract class BaseActivity<T : AppState, I : com.example.core.viewmodel.Interac
                 if (appState.progress != null) {
                     binding.progressBarHorizontal.visibility = View.VISIBLE
                     binding.progressBarRound.visibility = View.GONE
-                    binding.progressBarHorizontal.progress = appState.progress
+                    binding.progressBarHorizontal.progress = appState.progress!!
                 } else {
                     binding.progressBarHorizontal.visibility = View.GONE
                     binding.progressBarRound.visibility = View.VISIBLE

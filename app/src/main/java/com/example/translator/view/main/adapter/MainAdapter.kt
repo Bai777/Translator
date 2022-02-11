@@ -5,11 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.model.data.DataModel
 import com.example.translator.R
-import com.example.translator.model.server.DataModel
 
 class MainAdapter(
-    private var onListItemClickListener: OnListItemClickListener
+    private var onListItemClickListener: OnListItemClickListener,
 ) :
     RecyclerView.Adapter<MainAdapter.RecyclerItemViewHolder>() {
 

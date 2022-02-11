@@ -1,4 +1,4 @@
-package com.example.translator.utils.network
+package com.example.utils.network
 
 import android.content.Context
 import android.net.ConnectivityManager

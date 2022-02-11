@@ -1,8 +1,6 @@
-import com.example.repository.api.room.HistoryEntity
-import com.example.translator.model.data.AppState
-import com.example.translator.model.data.DataModel
-import com.example.translator.room.HistoryEntity
-import java.util.*
+import com.example.model.data.AppState
+import com.example.model.data.DataModel
+import com.example.repository.room.HistoryEntity
 
 fun mapHistoryEntityToSearchResult(list: List<HistoryEntity>): List<DataModel> {
     val dataModel = ArrayList<DataModel>()

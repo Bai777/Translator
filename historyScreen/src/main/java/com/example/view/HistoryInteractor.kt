@@ -1,10 +1,9 @@
-package history.view
+package com.example.view
 
-import com.example.translator.model.data.AppState
-import com.example.translator.model.data.DataModel
-import com.example.translator.model.repository.Repository
-import com.example.translator.model.repository.RepositoryLocal
-import com.example.core.viewmodel.Interactor
+import com.example.model.data.AppState
+import com.example.repository.Repository
+import com.example.repository.RepositoryLocal
+import com.example.model.data.DataModel
 
 class HistoryInteractor(
     private val repositoryRemote: Repository<List<DataModel>>,

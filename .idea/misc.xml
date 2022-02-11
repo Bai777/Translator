@@ -16,12 +16,19 @@
         <entry key="..\:/AndroidStudioProjects/Translator/app/src/main/res/layout/activity_history_recycler_view_item.xml" value="0.13020833333333334" />
         <entry key="..\:/AndroidStudioProjects/Translator/app/src/main/res/layout/activity_history_recyclerview_item.xml" value="0.13020833333333334" />
         <entry key="..\:/AndroidStudioProjects/Translator/app/src/main/res/layout/activity_main.xml" value="0.14666666666666667" />
+        <entry key="..\:/AndroidStudioProjects/Translator/app/src/main/res/layout/activity_main_recyclerview_item.xml" value="0.3" />
         <entry key="..\:/AndroidStudioProjects/Translator/app/src/main/res/layout/dialog_box_layout.xml" value="0.13333333333333333" />
         <entry key="..\:/AndroidStudioProjects/Translator/app/src/main/res/layout/list_item_layout.xml" value="0.3177083333333333" />
         <entry key="..\:/AndroidStudioProjects/Translator/app/src/main/res/layout/list_layout.xml" value="0.13333333333333333" />
         <entry key="..\:/AndroidStudioProjects/Translator/app/src/main/res/layout/loading_layout.xml" value="0.13020833333333334" />
         <entry key="..\:/AndroidStudioProjects/Translator/app/src/main/res/layout/search_dialog_fragment.xml" value="0.12" />
         <entry key="..\:/AndroidStudioProjects/Translator/app/src/main/res/menu/history_menu.xml" value="0.18604651162790697" />
+        <entry key="..\:/AndroidStudioProjects/Translator/core/src/main/res/layout/loading_layout.xml" value="0.3177083333333333" />
+        <entry key="..\:/AndroidStudioProjects/Translator/core/src/main/res/xml/colors.xml" value="0.3177083333333333" />
+        <entry key="..\:/AndroidStudioProjects/Translator/historyScreen/src/main/res/layout/activity_history.xml" value="0.3177083333333333" />
+        <entry key="..\:/AndroidStudioProjects/Translator/historyScreen/src/main/res/layout/activity_history_recycler_view_item.xml" value="0.3177083333333333" />
+        <entry key="..\:/AndroidStudioProjects/Translator/historyScreen/src/main/res/layout/loading_layout.xml" value="0.3177083333333333" />
+        <entry key="..\:/AndroidStudioProjects/Translator/repository/src/main/res/xml/strings.xml" value="0.3" />
       </map>
     </option>
   </component>

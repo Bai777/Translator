@@ -1,6 +1,6 @@
 package com.example.repository.api
 
-import com.example.translator.model.data.ServerResponseStatusCode
+import com.example.model.data.ServerResponseStatusCode
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
@@ -12,7 +12,7 @@ class BaseInterceptor private constructor(): Interceptor{
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         val response = chain.proceed(chain.request())
-        responseCode = response.code
+        responseCode = response.code()
         return response
     }
 

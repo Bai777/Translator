@@ -1,6 +1,8 @@
 package com.example.translator.utils
 
-import com.example.model.data
+import com.example.model.data.AppState
+import com.example.model.data.DataModel
+import com.example.model.data.Meanings
 
 fun parseOnlineSearchResults(data: AppState): AppState {
     return AppState.Success(mapResult(data, true))

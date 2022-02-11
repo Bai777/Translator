@@ -1,11 +1,9 @@
-package com.example.translator.utils
+package history.view.parser
 
 
-import com.example.translator.model.data.AppState
-import com.example.translator.model.data.DataModel
-import com.example.translator.model.data.Meanings
-
-
+import com.example.model.data.AppState
+import com.example.model.data.DataModel
+import com.example.model.data.Meanings
 
 
 fun parseLocalSearchResults(appState: AppState): AppState {
@@ -14,7 +12,7 @@ fun parseLocalSearchResults(appState: AppState): AppState {
 
 private fun mapResult(
     appState: AppState,
-    isOnline: Boolean
+    isOnline: Boolean,
 ): List<DataModel> {
     val newSearchResults = arrayListOf<DataModel>()
     when (appState) {
@@ -28,7 +26,7 @@ private fun mapResult(
 private fun getSuccessResultData(
     appState: AppState.Success,
     isOnline: Boolean,
-    newDataModels: ArrayList<DataModel>
+    newDataModels: ArrayList<DataModel>,
 ) {
     val dataModels: List<DataModel> = appState.data as List<DataModel>
     if (dataModels.isNotEmpty()) {
@@ -47,8 +45,8 @@ private fun getSuccessResultData(
 private fun parseOnlineResult(dataModel: DataModel, newDataModels: ArrayList<DataModel>) {
     if (!dataModel.text.isNullOrBlank() && !dataModel.meanings.isNullOrEmpty()) {
         val newMeanings = arrayListOf<Meanings>()
-        for (meaning in dataModel.meanings) {
-            if (meaning.translation != null && !meaning.translation.translation.isNullOrBlank()) {
+        for (meaning in dataModel.meanings!!) {
+            if (meaning.translation != null && !meaning.translation!!.translation.isNullOrBlank()) {
                 newMeanings.add(Meanings(meaning.translation, meaning.imageUrl))
             }
         }

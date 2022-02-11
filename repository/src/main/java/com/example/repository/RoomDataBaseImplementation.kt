@@ -1,11 +1,11 @@
 package com.example.repository
 
-import com.example.translator.model.data.AppState
-import com.example.translator.model.data.DataModel
-import com.example.translator.utils.convertDataModelSuccessToEntity
-import com.example.translator.utils.mapHistoryEntityToSearchResult
+import com.example.model.data.AppState
+import com.example.model.data.DataModel
+import convertDataModelSuccessToEntity
+import mapHistoryEntityToSearchResult
 
-class RoomDataBaseImplementation(private val historyDao: com.example.repository.api.room.HistoryDao) :
+class RoomDataBaseImplementation(private val historyDao: com.example.repository.room.HistoryDao) :
     DataSourceLocal<List<DataModel>> {
 
     override suspend fun getData(word: String): List<DataModel> {
