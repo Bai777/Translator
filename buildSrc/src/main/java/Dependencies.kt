@@ -2,9 +2,9 @@ import org.gradle.api.JavaVersion
 
 object Config {
     const val application_id = "com.example.translator"
-    const val compile_sdk = 31
+    const val compile_sdk = 30
     const val min_sdk = 21
-    const val target_sdk = 31
+    const val target_sdk = 30
     val java_version = JavaVersion.VERSION_1_8
 }
 
@@ -42,16 +42,16 @@ object Versions {
     const val adapterCoroutines = "0.9.2"
 
     //Koin
-    const val koinAndroid = "2.1.6"
-    const val koinViewModel = "2.1.6"
+    const val koinAndroid = "3.0.1"
+    const val koinViewModel = "3.0.1"
 
     //Coil
     const val coil = "0.11.0"
 
     //Room
-    const val roomKtx = "2.3.0"
-    const val runtime = "2.3.0"
-    const val roomCompiler = "2.3.0"
+    const val roomKtx = "2.4.1"
+    const val runtime = "2.4.1"
+    const val roomCompiler = "2.4.1"
 
     //Test
     const val jUnit = "4.12"

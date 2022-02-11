@@ -18,6 +18,7 @@ abstract class BaseViewModel<T : AppState>(
     )
 
     override fun onCleared() {
+        super.onCleared()
         cancelJob()
     }
 
