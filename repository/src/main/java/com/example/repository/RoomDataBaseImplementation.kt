@@ -1,20 +1,19 @@
 package com.example.repository
 
-import com.example.model.data.AppState
 import com.example.model.data.DataModel
-import convertDataModelSuccessToEntity
+import com.example.repository.room.HistoryDataBase
 import mapHistoryEntityToSearchResult
 
-class RoomDataBaseImplementation(private val historyDao: com.example.repository.room.HistoryDao) :
-    DataSourceLocal<List<DataModel>> {
+class RoomDataBaseImplementation(private val historyDao: HistoryDataBase) :
+    DataSource<List<DataModel>> {
+
+    private val db = historyDao.getHistoryDao()
 
     override suspend fun getData(word: String): List<DataModel> {
-        return mapHistoryEntityToSearchResult(historyDao.all())
+        return mapHistoryEntityToSearchResult(db.getDataByWord(word))
     }
 
-    override suspend fun saveToDB(appState: AppState) {
-        convertDataModelSuccessToEntity(appState)?.let {
-            historyDao.insert(it)
-        }
+    override suspend fun getData(): List<DataModel> {
+        return mapHistoryEntityToSearchResult(db.all())
     }
 }
