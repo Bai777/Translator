@@ -14,7 +14,7 @@ val application = module {
     single { Room.databaseBuilder(get(),
         HistoryDataBase::class.java, "HistoryDB").build() }
 
-//    single { get<HistoryDataBase>().historyDao() }
+    single { get<HistoryDataBase>().getHistoryDao()}
 
     single<Repository<List<DataModel>>> {
         RepositoryImplementation(RetrofitImplementation())

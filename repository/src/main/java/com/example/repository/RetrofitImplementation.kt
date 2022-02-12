@@ -41,8 +41,4 @@ class RetrofitImplementation: DataSource<List<DataModel>> {
         private const val BASE_URL_LOCATIONS =
             "https://dictionary.skyeng.ru/api/public/v1/"
     }
-
-    override suspend fun getData(): List<DataModel> {
-        TODO("Not yet implemented")
-    }
 }
