@@ -6,7 +6,7 @@ import com.example.core.viewmodel.base.BaseActivity
 import com.example.historyscreen.databinding.ActivityHistoryBinding
 import com.example.model.data.AppState
 import com.example.model.data.DataModel
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HistoryActivity : BaseActivity<AppState, HistoryInteractor>() {
     private lateinit var binding: ActivityHistoryBinding

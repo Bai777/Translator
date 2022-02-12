@@ -49,8 +49,9 @@ dependencies {
     implementation Kotlin.coroutines_android
 
     // Koin for Android
-    implementation Koin.koin_android
-    implementation Koin.koin_view_model
+    implementation Koin.koin_insert_android
+    implementation Koin.koin_insert_core
+    implementation Koin.koin_insert_compat
 
     //Coil
     implementation Coil.coil
@@ -59,6 +60,9 @@ dependencies {
     implementation Room.runtime
     kapt Room.compiler
     implementation Room.room_ktx
+
+     Dagger
+    implementation Dagger.dagger
 
     // Test
     testImplementation TestImpl.junit

@@ -2,6 +2,8 @@ package com.example.translator.di
 
 import androidx.room.Room
 import com.example.model.data.DataModel
+import com.example.repository.*
+import com.example.repository.room.HistoryDataBase
 import com.example.translator.view.main.MainInteractor
 import com.example.translator.view.main.MainViewModel
 import com.example.view.HistoryInteractor
@@ -10,16 +12,16 @@ import org.koin.dsl.module
 
 val application = module {
     single { Room.databaseBuilder(get(),
-        com.example.repository.room.HistoryDataBase::class.java, "HistoryDB").build() }
+        HistoryDataBase::class.java, "HistoryDB").build() }
 
-    single { get<com.example.repository.room.HistoryDataBase>().historyDao() }
+//    single { get<HistoryDataBase>().historyDao() }
 
-    single<com.example.repository.Repository<List<DataModel>>> {
-        com.example.repository.RepositoryImplementation(com.example.repository.RetrofitImplementation())
+    single<Repository<List<DataModel>>> {
+        RepositoryImplementation(RetrofitImplementation())
     }
 
-    single<com.example.repository.RepositoryLocal<List<DataModel>>>{
-        com.example.repository.RepositoryImplementationLocal(com.example.repository.RoomDataBaseImplementation(
+    single<RepositoryLocal<List<DataModel>>>{
+        RepositoryImplementationLocal(RoomDataBaseImplementation(
             get()))
     }
 }

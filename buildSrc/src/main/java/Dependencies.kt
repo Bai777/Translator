@@ -2,9 +2,9 @@ import org.gradle.api.JavaVersion
 
 object Config {
     const val application_id = "com.example.translator"
-    const val compile_sdk = 30
+    const val compile_sdk = 31
     const val min_sdk = 21
-    const val target_sdk = 30
+    const val target_sdk = 31
     val java_version = JavaVersion.VERSION_1_8
 }
 
@@ -26,32 +26,32 @@ object Modules {
 
 object Versions {
     //Design
-    const val appcompat = "1.1.0-rc01"
-    const val material = "1.0.0"
+    const val appcompat = "1.4.1"
+    const val material = "1.4.0"
 
     //Kotlin
-    const val core = "1.6.0"
+    const val core = "1.7.0"
     const val stdlib = "1.5.21"
     const val coroutinesCore = "1.4.3"
     const val coroutinesAndroid = "1.4.3"
 
     //Retrofit
-    const val retrofit = "2.6.0"
-    const val converterGson = "2.6.0"
-    const val interceptor = "3.12.1"
+    const val retrofit = "2.9.0"
+    const val converterGson = "2.9.0"
+    const val interceptor = "4.9.1"
     const val adapterCoroutines = "0.9.2"
 
     //Koin
-    const val koinAndroid = "3.0.1"
-    const val koinViewModel = "3.0.1"
+    const val koinAndroid = "2.1.6"
+    const val koinViewModel = "2.1.6"
 
     //Coil
     const val coil = "0.11.0"
 
     //Room
-    const val roomKtx = "2.4.1"
-    const val runtime = "2.4.1"
-    const val roomCompiler = "2.4.1"
+    const val roomKtx = "2.3.0"
+    const val runtime = "2.3.0"
+    const val roomCompiler = "2.3.0"
 
     //Test
     const val jUnit = "4.12"
@@ -85,10 +85,22 @@ object Retrofit {
 object Koin {
     const val koin_android = "org.koin:koin-android:${Versions.koinAndroid}"
     const val koin_view_model = "org.koin:koin-android-viewmodel:${Versions.koinViewModel}"
+    const val koin_insert_core = "io.insert-koin:koin-core:3.1.2"
+    const val koin_insert_android = "io.insert-koin:koin-android:3.1.2"
+    const val koin_insert_compat = "io.insert-koin:koin-android-compat:3.1.2"
 }
 
 object Coil {
     const val coil = "io.coil-kt:coil:${Versions.coil}"
+}
+
+//Dagger 2
+object Dagger {
+    const val dagger = "com.google.dagger:dagger:2.38"
+    const val dagger_android = "com.google.dagger:dagger-android:2.38"
+    const val dagger_support = "com.google.dagger:dagger-android-support:2.38"
+    const val dagger_compiler = "com.google.dagger:dagger-compiler:2.38"
+    const val dagger_processor = "com.google.dagger:dagger-android-processor:2.38"
 }
 
 object Room {

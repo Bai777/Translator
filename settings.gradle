@@ -1,3 +1,5 @@
+
+rootProject.name = "Translator"
 include ':app'
 include ':core'
 include ':historyScreen'
