@@ -1,8 +1,8 @@
 package com.example.translator.utils
 
 import com.example.model.data.AppState
-import com.example.model.data.DataModel
-import com.example.model.data.Meanings
+import com.example.model.data.userdata.DataModel
+import com.example.model.data.dto.MeaningsDto
 
 fun parseOnlineSearchResults(data: AppState): AppState {
     return AppState.Success(mapResult(data, true))
@@ -45,10 +45,10 @@ private fun parseOnlineResult(
     newDataModels: ArrayList<DataModel>
 ) {
     if (!dataModel.text.isNullOrBlank() && !dataModel.meanings.isNullOrEmpty()) {
-        val newMeanings = arrayListOf<Meanings>()
+        val newMeanings = arrayListOf<MeaningsDto>()
         for (meaning in dataModel.meanings!!) {
             if (meaning.translation != null && !meaning.translation!!.translation.isNullOrBlank()) {
-                newMeanings.add(Meanings(meaning.translation, meaning.imageUrl))
+                newMeanings.add(MeaningsDto(meaning.translation, meaning.imageUrl))
             }
         }
         if (newMeanings.isNotEmpty()) {
@@ -57,7 +57,7 @@ private fun parseOnlineResult(
     }
 }
 
-fun convertMeaningsToString(meanings: List<Meanings>): String {
+fun convertMeaningsToString(meanings: List<MeaningsDto>): String {
     var meaningsSeparatedByComma = String()
     for ((index, meaning) in meanings.withIndex()) {
         meaningsSeparatedByComma += if (index + 1 != meanings.size) {

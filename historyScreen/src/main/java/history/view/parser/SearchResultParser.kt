@@ -2,8 +2,8 @@ package history.view.parser
 
 
 import com.example.model.data.AppState
-import com.example.model.data.DataModel
-import com.example.model.data.Meanings
+import com.example.model.data.userdata.DataModel
+import com.example.model.data.dto.MeaningsDto
 
 
 fun parseLocalSearchResults(appState: AppState): AppState {
@@ -44,10 +44,10 @@ private fun getSuccessResultData(
 
 private fun parseOnlineResult(dataModel: DataModel, newDataModels: ArrayList<DataModel>) {
     if (!dataModel.text.isNullOrBlank() && !dataModel.meanings.isNullOrEmpty()) {
-        val newMeanings = arrayListOf<Meanings>()
+        val newMeanings = arrayListOf<MeaningsDto>()
         for (meaning in dataModel.meanings!!) {
             if (meaning.translation != null && !meaning.translation!!.translation.isNullOrBlank()) {
-                newMeanings.add(Meanings(meaning.translation, meaning.imageUrl))
+                newMeanings.add(MeaningsDto(meaning.translation, meaning.imageUrl))
             }
         }
         if (newMeanings.isNotEmpty()) {

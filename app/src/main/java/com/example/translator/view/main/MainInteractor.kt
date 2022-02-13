@@ -1,7 +1,7 @@
 package com.example.translator.view.main
 
 import com.example.model.data.AppState
-import com.example.model.data.DataModel
+import com.example.model.data.userdata.DataModel
 
 class MainInteractor(
     private val repositoryRemote: com.example.repository.Repository<List<DataModel>>,

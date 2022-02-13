@@ -1,6 +1,5 @@
 package com.example.repository.api
 
-import com.example.model.data.DataModel
 import com.example.model.data.dto.SearchResultDto
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET

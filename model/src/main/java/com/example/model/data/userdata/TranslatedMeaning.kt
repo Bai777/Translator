@@ -1,3 +1,3 @@
-package geekbrains.ru.model.data.userdata
+package com.example.model.data.userdata
 
 data class TranslatedMeaning(val translatedMeaning: String = "")

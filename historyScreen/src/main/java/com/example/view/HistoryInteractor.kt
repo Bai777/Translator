@@ -4,7 +4,7 @@ import com.example.core.viewmodel.Interactor
 import com.example.model.data.AppState
 import com.example.repository.Repository
 import com.example.repository.RepositoryLocal
-import com.example.model.data.DataModel
+import com.example.model.data.userdata.DataModel
 
 class HistoryInteractor(
     private val repositoryRemote: Repository<List<DataModel>>,

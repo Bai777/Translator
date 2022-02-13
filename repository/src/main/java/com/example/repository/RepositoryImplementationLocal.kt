@@ -1,7 +1,7 @@
 package com.example.repository
 
 import com.example.model.data.AppState
-import com.example.model.data.DataModel
+import com.example.model.data.userdata.DataModel
 import com.example.model.data.dto.SearchResultDto
 import com.example.repository.api.ApiService
 import com.example.repository.api.BaseInterceptor

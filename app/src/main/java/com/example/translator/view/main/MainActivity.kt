@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.example.core.viewmodel.base.BaseActivity
 import com.example.model.data.AppState
-import com.example.model.data.DataModel
+import com.example.model.data.userdata.DataModel
 import com.example.translator.R
 import com.example.translator.databinding.ActivityMainBinding
 import com.example.translator.utils.convertMeaningsToString
