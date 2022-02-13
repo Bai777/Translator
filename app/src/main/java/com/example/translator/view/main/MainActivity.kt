@@ -14,7 +14,7 @@ import com.example.model.data.AppState
 import com.example.model.data.userdata.DataModel
 import com.example.translator.R
 import com.example.translator.databinding.ActivityMainBinding
-import com.example.translator.utils.convertMeaningsToString
+import com.example.translator.utils.convertMeaningsToSingleString
 import com.example.translator.view.description.DescriptionActivity
 import com.example.translator.view.main.adapter.MainAdapter
 import com.example.utils.viewById
@@ -51,9 +51,9 @@ class MainActivity : BaseActivity<AppState, MainInteractor>() {
                 startActivity(
                     DescriptionActivity.getIntent(
                         this@MainActivity,
-                        data.text!!,
-                        convertMeaningsToString(data.meanings!!),
-                        data.meanings!![0].imageUrl
+                        data.text,
+                        convertMeaningsToSingleString(data.meanings),
+                        data.meanings[0].imageUrl
                     )
                 )
             }
