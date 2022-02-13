@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.RecyclerView
 import com.example.core.viewmodel.base.BaseActivity
 import com.example.model.data.AppState
 import com.example.model.data.DataModel
@@ -17,7 +18,9 @@ import com.example.translator.utils.convertMeaningsToString
 import com.example.translator.view.description.DescriptionActivity
 import com.example.translator.view.main.adapter.MainAdapter
 import com.example.utils.network.isOnline
+import com.example.utils.viewById
 import com.example.view.HistoryActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val BOTTOM_SHEET_FRAGMENT_DIALOG_TAG =
@@ -26,12 +29,14 @@ private const val BOTTOM_SHEET_FRAGMENT_DIALOG_TAG =
 class MainActivity : BaseActivity<AppState, MainInteractor>() {
 
         override lateinit var model: MainViewModel
-//    override var model: MainViewModel by currentScope.inject()
 
     private lateinit var binding: ActivityMainBinding
     private val adapter: MainAdapter by lazy {
         MainAdapter(onListItemClickListener)
     }
+
+    private val mainActivityRecyclerview by viewById<RecyclerView>(R.id.main_activity_recyclerview)
+    private val searchFAB by viewById<FloatingActionButton>(R.id.search_fab)
 
     private val fabClickListener: View.OnClickListener =
         View.OnClickListener {
@@ -91,8 +96,8 @@ class MainActivity : BaseActivity<AppState, MainInteractor>() {
     }
 
     private fun initViews() {
-        binding.searchFab.setOnClickListener(fabClickListener)
-        binding.mainActivityRecyclerview.adapter = adapter
+        searchFAB.setOnClickListener(fabClickListener)
+        mainActivityRecyclerview.adapter = adapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
