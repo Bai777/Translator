@@ -17,7 +17,6 @@ import com.example.translator.databinding.ActivityMainBinding
 import com.example.translator.utils.convertMeaningsToString
 import com.example.translator.view.description.DescriptionActivity
 import com.example.translator.view.main.adapter.MainAdapter
-import com.example.utils.network.isOnline
 import com.example.utils.viewById
 import com.example.view.HistoryActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -63,7 +62,6 @@ class MainActivity : BaseActivity<AppState, MainInteractor>() {
     private val onSearchClickListener: SearchDialogFragment.OnSearchClickListener =
         object : SearchDialogFragment.OnSearchClickListener {
             override fun onClick(searchWord: String) {
-                val isNetworkAvailable = isOnline(this@MainActivity)
                 if (isNetworkAvailable) {
                     model.getData(searchWord, isNetworkAvailable)
                 } else {
