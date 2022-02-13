@@ -49,9 +49,9 @@ object Versions {
     const val coil = "0.11.0"
 
     //Room
-    const val roomKtx = "2.3.0"
-    const val runtime = "2.3.0"
-    const val roomCompiler = "2.3.0"
+    const val roomKtx = "2.4.1"
+    const val runtime = "2.4.1"
+    const val roomCompiler = "2.4.1"
 
     //Test
     const val jUnit = "4.12"
