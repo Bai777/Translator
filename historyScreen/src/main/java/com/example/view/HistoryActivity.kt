@@ -9,8 +9,10 @@ import com.example.model.data.DataModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HistoryActivity : BaseActivity<AppState, HistoryInteractor>() {
-    private lateinit var binding: ActivityHistoryBinding
     override lateinit var model: HistoryViewModel
+//    override var model: HistoryViewModel by currentScope.inject()
+
+    private lateinit var binding: ActivityHistoryBinding
     private val adapter: HistoryAdapter by lazy { HistoryAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {

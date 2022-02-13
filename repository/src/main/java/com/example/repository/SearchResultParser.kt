@@ -1,3 +1,5 @@
+package com.example.repository
+
 import com.example.model.data.AppState
 import com.example.model.data.DataModel
 import com.example.repository.room.HistoryEntity

@@ -14,9 +14,9 @@ import com.example.model.data.DataModel
 import com.example.translator.R
 import com.example.translator.databinding.ActivityMainBinding
 import com.example.translator.utils.convertMeaningsToString
-import com.example.utils.network.isOnline
 import com.example.translator.view.description.DescriptionActivity
 import com.example.translator.view.main.adapter.MainAdapter
+import com.example.utils.network.isOnline
 import com.example.view.HistoryActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -25,7 +25,9 @@ private const val BOTTOM_SHEET_FRAGMENT_DIALOG_TAG =
 
 class MainActivity : BaseActivity<AppState, MainInteractor>() {
 
-    override lateinit var model: MainViewModel
+        override lateinit var model: MainViewModel
+//    override var model: MainViewModel by currentScope.inject()
+
     private lateinit var binding: ActivityMainBinding
     private val adapter: MainAdapter by lazy {
         MainAdapter(onListItemClickListener)
