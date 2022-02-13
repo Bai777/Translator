@@ -20,15 +20,18 @@ import com.example.translator.view.main.adapter.MainAdapter
 import com.example.utils.viewById
 import com.example.view.HistoryActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.android.ext.android.inject
+import org.koin.android.scope.AndroidScopeComponent
+import org.koin.androidx.scope.activityRetainedScope
+import org.koin.core.scope.Scope
 
 private const val BOTTOM_SHEET_FRAGMENT_DIALOG_TAG =
     "74a54328-5d62-46bf-ab6b-cbf5fgt0-092395"
 
-class MainActivity : BaseActivity<AppState, MainInteractor>() {
+class MainActivity : BaseActivity<AppState, MainInteractor>(), AndroidScopeComponent {
 
-        override lateinit var model: MainViewModel
-
+    override val scope : Scope by activityRetainedScope()
+    override lateinit var model: MainViewModel
     private lateinit var binding: ActivityMainBinding
     private val adapter: MainAdapter by lazy {
         MainAdapter(onListItemClickListener)
@@ -85,10 +88,10 @@ class MainActivity : BaseActivity<AppState, MainInteractor>() {
     }
 
     private fun initViewModel() {
-        if (binding.mainActivityRecyclerview.adapter != null) {
+        if (mainActivityRecyclerview.adapter != null) {
             throw IllegalStateException("The ViewModel should be initialised first")
         }
-        val viewModel: MainViewModel by viewModel()
+        val viewModel: MainViewModel by inject()
         model = viewModel
         model.subscribe().observe(this@MainActivity, Observer<AppState> { renderData(it) })
     }

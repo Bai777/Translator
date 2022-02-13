@@ -6,9 +6,13 @@ import com.example.core.viewmodel.base.BaseActivity
 import com.example.historyscreen.databinding.ActivityHistoryBinding
 import com.example.model.data.AppState
 import com.example.model.data.userdata.DataModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.android.ext.android.inject
+import org.koin.android.scope.AndroidScopeComponent
+import org.koin.androidx.scope.activityRetainedScope
+import org.koin.core.scope.Scope
 
-class HistoryActivity : BaseActivity<AppState, HistoryInteractor>() {
+class HistoryActivity : BaseActivity<AppState, HistoryInteractor>(), AndroidScopeComponent {
+    override val scope : Scope by activityRetainedScope()
     override lateinit var model: HistoryViewModel
 
     private lateinit var binding: ActivityHistoryBinding
@@ -36,7 +40,7 @@ class HistoryActivity : BaseActivity<AppState, HistoryInteractor>() {
         if (binding.historyActivityRecyclerview.adapter != null) {
             throw IllegalStateException("The ViewModel should be initialised first")
         }
-        val viewModel: HistoryViewModel by viewModel()
+        val viewModel: HistoryViewModel by inject()
         model = viewModel
         model.subscribe().observe(this@HistoryActivity, Observer<AppState> { renderData(it) })
     }

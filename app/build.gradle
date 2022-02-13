@@ -62,7 +62,7 @@ dependencies {
     kapt Room.compiler
     implementation Room.room_ktx
 
-     Dagger
+//     Dagger
     implementation Dagger.dagger
 
     // Test

@@ -30,7 +30,6 @@ val application = module {
     }
 }
 val mainScreen = module {
-
     scope(named<MainActivity>()){
         scoped{MainInteractor(get(), get())}
         viewModel{MainViewModel(get())}
@@ -38,7 +37,6 @@ val mainScreen = module {
 }
 
 val historyScreen = module {
-
     scope(named<HistoryActivity>()){
         scoped{HistoryInteractor(get(), get())}
         viewModel{HistoryViewModel(get())}

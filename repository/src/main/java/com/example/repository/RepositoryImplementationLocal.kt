@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RepositoryImplementationLocal(
     private val dataSource: DataSourceLocal<List<SearchResultDto>>
-): RepositoryLocal<List<DataModel>> {
+): RepositoryLocal<List<SearchResultDto>> {
 
     override suspend fun getData(word: String): List<SearchResultDto> {
         return getService(BaseInterceptor.interceptor).searchAsync(word).await()

@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.core.R
 import com.example.core.databinding.LoadingLayoutBinding
+import com.example.core.viewmodel.BaseViewModel
+import com.example.core.viewmodel.Interactor
 import com.example.model.data.AppState
 import com.example.model.data.userdata.DataModel
 import com.example.utils.network.OnlineLiveData
@@ -15,10 +17,10 @@ import com.example.utils.ui.AlertDialogFragment
 
 private const val DIALOG_FRAGMENT_TAG = "74a54328-5d62-46bf-ab6b-cbf5d8c79522"
 
-abstract class BaseActivity<T : AppState, I : com.example.core.viewmodel.Interactor<T>> : AppCompatActivity() {
+abstract class BaseActivity<T : AppState, I : Interactor<T>> : AppCompatActivity() {
 
     private lateinit var binding: LoadingLayoutBinding
-    abstract val model: com.example.core.viewmodel.BaseViewModel<T>
+    abstract val model: BaseViewModel<T>
     protected var isNetworkAvailable: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
