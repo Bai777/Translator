@@ -25,10 +25,8 @@ class DescriptionActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setActionbarHomeButtonAsUp()
-        binding.descriptionScreenSwipeRefreshLayout.setOnRefreshListener {
-            startLoadingOrShowError()
+        binding.descriptionScreenSwipeRefreshLayout.setOnRefreshListener{startLoadingOrShowError()}
             setData()
-        }
     }
 
     private fun startLoadingOrShowError() {

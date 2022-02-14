@@ -8,11 +8,11 @@ import com.example.model.data.AppState
 import com.example.model.data.userdata.DataModel
 import org.koin.android.ext.android.inject
 import org.koin.android.scope.AndroidScopeComponent
-import org.koin.androidx.scope.activityRetainedScope
+import org.koin.androidx.scope.activityScope
 import org.koin.core.scope.Scope
 
 class HistoryActivity : BaseActivity<AppState, HistoryInteractor>(), AndroidScopeComponent {
-    override val scope : Scope by activityRetainedScope()
+    override val scope : Scope by activityScope()
     override lateinit var model: HistoryViewModel
 
     private lateinit var binding: ActivityHistoryBinding

@@ -22,7 +22,7 @@ import com.example.view.HistoryActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.android.ext.android.inject
 import org.koin.android.scope.AndroidScopeComponent
-import org.koin.androidx.scope.activityRetainedScope
+import org.koin.androidx.scope.activityScope
 import org.koin.core.scope.Scope
 
 private const val BOTTOM_SHEET_FRAGMENT_DIALOG_TAG =
@@ -30,7 +30,7 @@ private const val BOTTOM_SHEET_FRAGMENT_DIALOG_TAG =
 
 class MainActivity : BaseActivity<AppState, MainInteractor>(), AndroidScopeComponent {
 
-    override val scope : Scope by activityRetainedScope()
+    override val scope : Scope by activityScope()
     override lateinit var model: MainViewModel
     private lateinit var binding: ActivityMainBinding
     private val adapter: MainAdapter by lazy {
