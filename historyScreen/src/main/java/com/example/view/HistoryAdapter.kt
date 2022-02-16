@@ -7,11 +7,16 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.historyscreen.R
+import com.example.model.data.AppState
 import com.example.model.data.userdata.DataModel
+import com.example.repository.convertDataModelSuccessToEntity
+import com.example.repository.room.HistoryDao
+import com.example.repository.room.HistoryEntity
 
-class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.RecyclerItemViewHolder>() {
+class HistoryAdapter() : RecyclerView.Adapter<HistoryAdapter.RecyclerItemViewHolder>() {
 
     private var data: List<DataModel> = arrayListOf()
+
 
     fun setData(data: List<DataModel>) {
         this.data = data
@@ -48,4 +53,5 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.RecyclerItemViewHolde
             }
         }
     }
+
 }

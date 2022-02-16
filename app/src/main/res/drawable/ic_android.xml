@@ -3,6 +3,12 @@
     android:height="512dp"
     android:viewportWidth="512"
     android:viewportHeight="512">
+  <group
+      android:name="logoGroup"
+      android:pivotX="256"
+      android:pivotY="256"
+      android:rotation="0">
+
   <path
       android:pathData="M256,256m-256,0a256,256 0,1 1,512 0a256,256 0,1 1,-512 0"
       android:fillColor="#A3C939"/>
@@ -27,4 +33,5 @@
   <path
       android:pathData="M256.333,206.541v165.818h15.5v52.682c0,13.037 10.569,23.606 23.606,23.606l0,0c13.037,0 23.606,-10.569 23.606,-23.606v-52.682h43.182V206.541H256.333z"
       android:fillColor="#E6E6E6"/>
+  </group>
 </vector>
