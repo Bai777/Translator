@@ -10,7 +10,5 @@
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_android</item>
         <item name="android:windowSplashScreenIconBackgroundColor">@color/color_gray</item>
         <item name="android:windowSplashScreenBrandingImage">@drawable/ic_apple</item>
-
-
     </style>
 </resources>
